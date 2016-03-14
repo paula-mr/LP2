@@ -13,13 +13,15 @@ public class pethouse {
     cachorro Cachorro;
     gato Gato;
     String nomedaloja;
-    int tempodeestadia;
+    int TempoEstadiaGato;
+    int TempoEstadiaCao;
     public pethouse() {}
-    public pethouse(cachorro Cachorro, gato Gato, String nomedaloja, int tempodeestadia) {
+    public pethouse(cachorro Cachorro, gato Gato, String nomedaloja, int TempoEstadiaGato, int TempoEstadiaCao) {
         this.Cachorro = Cachorro;
         this.Gato = Gato;
         this.nomedaloja = nomedaloja;
-        this.tempodeestadia = tempodeestadia;
+        this.TempoEstadiaCao = TempoEstadiaCao;
+        this.TempoEstadiaGato = TempoEstadiaGato;
     }
     public cachorro getCachorro() {
         return Cachorro;
@@ -39,10 +41,19 @@ public class pethouse {
     public void setNomedaloja(String nomedaloja) {
         this.nomedaloja = nomedaloja;
     }
-    public int getTempodeestadia() {
-        return tempodeestadia;
+    public int getTempoEstadiaCao() {
+        return TempoEstadiaCao;
     }
-    public void setTempodeestadia(int tempodeestadia) {
-        this.tempodeestadia = tempodeestadia;
+    public void setTempoEstadiaCao(int TempoEstadiaCao) {
+        this.TempoEstadiaCao = TempoEstadiaCao;
+    }
+    public int getTempoEstadiaGato() {
+        return TempoEstadiaGato;
+    }
+    public void setTempoEstadiaGato(int TempoEstadiaGato) {
+        this.TempoEstadiaGato = TempoEstadiaGato;
+    }
+    public double TotalAlimento(int TempoEstadia, double quantalimentod) {
+        return (double)TempoEstadia*quantalimentod;
     }
 }
