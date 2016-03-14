@@ -7,8 +7,22 @@ package formas;
 
 /**
  *
- * @author CristinaMaradaSilvaR
+ * @author Paula Ribeiro
  */
 public class segmento {
-    
+    private double seg;
+    public segmento() {}
+    public segmento (double seg) {
+        setSeg(seg);
+    }
+    public void setSeg(double seg) {
+        if (seg>0)
+            this.seg=seg;
+    }
+    public double getSeg() {
+        return seg;
+    }
+    public String Tostring() {
+        return "Segmento de reta: " + seg;
+    }
 }
