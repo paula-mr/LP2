@@ -37,7 +37,7 @@ public class paralelepípedo {
     public double areaexterna() {
         double a = ret.area();
         double p = profund.getSeg();
-        double alt = ret.getlado2();
+        double alt = ret.getLado2().getSeg();
         double areae = 4*a + 2*p*alt;
         return areae;
     }
