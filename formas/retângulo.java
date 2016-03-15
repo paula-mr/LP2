@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package formas;
-// GAMBIARRA PARA ARRUMAR
+
 /**
  *
  * @author Paula Ribeiro
@@ -34,14 +34,6 @@ public class retângulo {
     }
     public segmento getLado1 () {
         return lado1;
-    }
-    public double getlado1 () {
-        double l1=lado1.getSeg();
-        return l1;
-    }
-    public double getlado2 () {
-        double l2=lado2.getSeg();
-        return l2;
     }
     public void setLado2(segmento lado2) {
         this.lado2 = lado2;
