@@ -12,8 +12,6 @@ package formas;
 public class paralelepípedo {
     private retângulo ret;
     private segmento profund;
-    private segmento l1;
-    private segmento l2;
     public paralelepípedo () {
         ret = new retângulo();
         profund = new segmento();
@@ -35,10 +33,10 @@ public class paralelepípedo {
         this.profund = profund;
     }
     public double areaexterna() {
-        double a = ret.area();
+        double comp = ret.getLado1().getSeg();
         double p = profund.getSeg();
         double alt = ret.getLado2().getSeg();
-        double areae = 4*a + 2*p*alt;
+        double areae = 2*(comp*alt+p*alt+comp*p);
         return areae;
     }
     public double volume() {
