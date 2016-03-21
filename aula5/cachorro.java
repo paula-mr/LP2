@@ -30,7 +30,8 @@ public class cachorro {
         return quantAlimentoD;
     }
     public void setQuantAlimentoD(double quantAlimentoD) {
-        this.quantAlimentoD = quantAlimentoD;
+        this.quantAlimentoD = quantAlimentoD/1000;
+        //transformando a quantidade de gramas em kg
     }
     public static double getQuantRacao() {
         return quantRacao;
