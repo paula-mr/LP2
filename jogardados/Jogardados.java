@@ -18,10 +18,10 @@ public class Jogardados {
         for (int i=0; i<jogadas; i++) {
             jogador.proxJogador(jogador1, jogador2, jogador3, jogador4);
             pont=dado.jogar();
-            JOptionPane.showMessageDialog(null, "Jogador: " + jogador.proxJogador.nome + "\nPontuação: " + pont);
+            JOptionPane.showMessageDialog(null, "Jogador: " + jogador.getProxJogador().getNome() + "\nPontuação: " + pont);
             jogador.pontuacao(pont, jogador1, jogador2, jogador3, jogador4);
         }
         jogador.ganhador(jogador1, jogador2, jogador3, jogador4);
-        JOptionPane.showMessageDialog(null, "Ganhador: " + jogador.ganhador.nome + "\nPontuação: " + jogador.maiorPont);
+        JOptionPane.showMessageDialog(null, "Ganhador: " + jogador.getGanhador().getNome() + "\nPontuação: " + jogador.getMaiorPont());
     }
 }
