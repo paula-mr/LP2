@@ -60,7 +60,7 @@ public class dado {
             case 4:
                 pont=getFace5();
                 break;
-            case 6:
+            case 5:
                 pont=getFace6();
                 break;
         }
