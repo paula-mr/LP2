@@ -6,22 +6,37 @@ import java.util.Random;
  * @author Paula
  */
 public class jogador {
-    static jogador proxJogador;
-    static jogador ganhador;
-    static int maiorPont;
-    String nome;
-    //incluindo pontuação de cada um dos jogadores
-    static int pont1;
-    static int pont2;
-    static int pont3;
-    static int pont4;
+    private String nome;
+    private int pont;
+    private static jogador proxJogador;
+    private static jogador ganhador;
+    private static int maiorPont;
     public jogador () {}
     public jogador (String nome) {
         this.nome=nome;
+        pont=0;
     }
-    public static jogador proxJogador(jogador jogador1, jogador jogador2, jogador jogador3, jogador jogador4) {
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    public String getNome() {
+        return nome;
+    }
+    public static jogador getProxJogador() {
+        return proxJogador;
+    }
+    public static jogador getGanhador() {
+        return ganhador;
+    }
+    public static int getMaiorPont() {
+        return maiorPont;
+    }
+    public int getPont() {
+        return pont;
+    }
+    public static void proxJogador(jogador jogador1, jogador jogador2, jogador jogador3, jogador jogador4) {
         Random gerador = new Random();
-        int prox = gerador.nextInt(3);
+        int prox = gerador.nextInt(4);
         switch (prox) {
             case 0:
                 proxJogador=jogador1;
@@ -36,17 +51,16 @@ public class jogador {
                 proxJogador=jogador4;
                 break;
         }
-        return proxJogador;
     }
-    public static void pontuacao (int pont, jogador jogador1, jogador jogador2, jogador jogador3, jogador jogador4) {
+    public static void pontuacao(int pont, jogador jogador1, jogador jogador2, jogador jogador3, jogador jogador4) {
         if (proxJogador==jogador1)
-            pont1+=pont;
+            jogador1.pont+=pont;
         if (proxJogador==jogador2)
-            pont2+=pont;
+            jogador2.pont+=pont;
         if (proxJogador==jogador3)
-            pont3+=pont;
+            jogador3.pont+=pont;
         if (proxJogador==jogador4)
-            pont4+=pont;
+            jogador4.pont+=pont;
     }
     public static void ganhador (jogador jogador1, jogador jogador2, jogador jogador3, jogador jogador4) {
         if (pont1>pont2 && pont1>pont3 && pont1>pont4) {
