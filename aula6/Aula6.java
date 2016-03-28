@@ -21,9 +21,8 @@ public class Aula6 {
         //criando a JFrame
         JFrame janela = new JFrame("Turma A");
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        janela.setSize(400,200);
         janela.setVisible(true);
         janela.add(CaixaSaida);
-        
+        janela.pack();
     }
 }
