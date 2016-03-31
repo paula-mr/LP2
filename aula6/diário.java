@@ -16,9 +16,7 @@ public class diário {
         this.aulasFrequentadas = aulasFrequentadas;
         this.nota = nota;
         this.nome = nome;
-        Frequencia();
-        Conceito();
-        CondiçãoFinal();
+        operações();
     }
     public int getAulasFrequentadas() {
         return aulasFrequentadas;
@@ -81,5 +79,10 @@ public class diário {
                     break;
             }
         }
+    }
+    void operações() {
+        Frequencia();
+        Conceito();
+        CondiçãoFinal();
     }
 }
