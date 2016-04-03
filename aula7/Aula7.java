@@ -7,11 +7,11 @@ import javax.swing.JOptionPane;
  */
 public class Aula7 {
     public static void main(String[] args) {
-        int numVoos=2;
+        int numVoos=5;
         passageiro p = new passageiro();
         vôo voo[] = new vôo[numVoos];
         //cria os vôos
-        for (int i=0; i<numVoos; i++) { //mudar para 5
+        for (int i=0; i<numVoos; i++) {
             voo[i] = new vôo();
             voo[i].setNumVoo(Integer.parseInt(JOptionPane.showInputDialog("Digite o número do vôo:")));
             voo[i].setTipoAvião(Integer.parseInt(JOptionPane.showInputDialog("Digite o tipo de avião utilizado:")));
