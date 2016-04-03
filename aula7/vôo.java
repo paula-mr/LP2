@@ -64,7 +64,7 @@ public class vôo {
             }
             else {
                 if(getTipoAvião()==737) {
-                    capacidade=2; //mudar pra 5
+                    capacidade=5;
                 }
             }
         }
