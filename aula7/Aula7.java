@@ -28,7 +28,6 @@ public class Aula7 {
                         voo[i].setPassageiro(p);
                         JOptionPane.showMessageDialog(null, "Identidade: " + p.getId() + "\nVôo: " + p.getVoo() +"\nPreço da passagem: " 
                         + voo[i].getPreço() + "\nRESERVA CONFIRMADA");
-                        voo[i].reservas();
                     }
                     else {
                     JOptionPane.showMessageDialog(null, "Identidade: " + p.getId() + "\nVôo: " + p.getVoo() + "\nVÔO LOTADO");
