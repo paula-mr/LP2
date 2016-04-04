@@ -18,6 +18,7 @@ public class vôo {
         this.tipoAvião = tipoAvião;
         this.preço = preço;
         setCapacidade();
+        passageiro = new passageiro[capacidade];
     }
     public int getNumVoo() {
         return numVoo;
@@ -44,6 +45,7 @@ public class vôo {
     }
     public void setPassageiro(passageiro p) {
         passageiro[reservas] = p;
+        reservas++;
     }
     public int getReservas() {
         return reservas;
@@ -71,8 +73,5 @@ public class vôo {
     }
     public boolean checkCapacidade() {
         return reservas<capacidade;
-    }
-    public void reservas() {
-        reservas++;
     }
 }
