@@ -8,7 +8,7 @@ import java.awt.FlowLayout;
  */
 public class Aula8 {
     public static void main(String[] args) {
-        eleicoes eleicao = new eleicoes();
-        
+        Eleicoes eleicao = new Eleicoes();
+        eleicao.setVisible(true);
     }
 }
