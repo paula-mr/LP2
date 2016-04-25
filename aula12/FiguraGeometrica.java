@@ -8,7 +8,9 @@ public class FiguraGeometrica {
     protected String cor;
     protected boolean preenche;
     protected java.util.Date dataCriacao;
-    public FiguraGeometrica() {}
+    public FiguraGeometrica() {
+        dataCriacao = new java.util.Date();
+    }
     public String getCor() {
         return cor;
     }
