@@ -20,6 +20,6 @@ public class AreaRetangulo extends OpAvancado {
         return altura;
     }
     public double area() {
-        return (comp*altura);
+        return mult(comp,altura);
     }
 }
