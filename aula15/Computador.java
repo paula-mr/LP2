@@ -8,7 +8,6 @@ public class Computador extends Info implements Produtos {
     private double preco;
     private int quantidade;
     private int memoria;
-    private int vendas;
     private int estoque;
     public Computador() {}
     public Computador(double preco, int quantidade, int memoria, String modelo, String marca) {
@@ -36,12 +35,15 @@ public class Computador extends Info implements Produtos {
         this.memoria = memoria;
     }
     @Override
-    public int venda(int prodVendidos) {
-        vendas = prodVendidos;
-        return vendas;
+    public void venda() {
+        quantidade--;
     }
     @Override
     public int estoque() {
-        return quantidade-vendas;
+        return quantidade;
+    }
+    @Override
+    public String toString() {
+        return "Quantidade no estoque: " + estoque();
     }
 }

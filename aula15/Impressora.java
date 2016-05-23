@@ -6,12 +6,11 @@ package aula15;
  */
 public class Impressora extends Info implements Produtos {
     private int quantidade;
-    private int preco;
+    private double preco;
     private String tipo;
-    private int vendas;
     private int estoque;
     public Impressora() {}
-    public Impressora(int quantidade, int preco, String tipo, String modelo, String marca) {
+    public Impressora(int quantidade, double preco, String tipo, String modelo, String marca) {
         super(modelo, marca);
         this.quantidade = quantidade;
         this.preco = preco;
@@ -23,10 +22,10 @@ public class Impressora extends Info implements Produtos {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
-    public int getPreco() {
+    public double getPreco() {
         return preco;
     }
-    public void setPreco(int preco) {
+    public void setPreco(double preco) {
         this.preco = preco;
     }
     public String getTipo() {
@@ -36,12 +35,15 @@ public class Impressora extends Info implements Produtos {
         this.tipo = tipo;
     }
     @Override
-    public int venda(int prodVendidos) {
-        vendas = prodVendidos;
-        return vendas;
+    public void venda() {
+        quantidade--;
     }
     @Override
     public int estoque() {
-        return quantidade-vendas;
+        return quantidade;
+    }
+    @Override
+    public String toString() {
+        return "Quantidade no estoque: " + estoque();
     }
 }

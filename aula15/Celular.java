@@ -6,10 +6,9 @@ package aula15;
  */
 public class Celular extends Info implements Produtos {
     private int quantidade;
-    private int preco;
-    private int vendas;
+    private double preco;
     public Celular() {}
-    public Celular(int quantidade, int preco, String modelo, String marca) {
+    public Celular(int quantidade, double preco, String modelo, String marca) {
         super(modelo, marca);
         this.quantidade = quantidade;
         this.preco = preco;
@@ -20,19 +19,22 @@ public class Celular extends Info implements Produtos {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
-    public int getPreco() {
+    public double getPreco() {
         return preco;
     }
     public void setPreco(int preco) {
         this.preco = preco;
     }
     @Override
-    public int venda(int prodVendidos) {
-        vendas = prodVendidos;
-        return vendas;
+    public void venda() {
+        quantidade--;
     }
     @Override
     public int estoque() {
-        return quantidade-vendas;
+        return quantidade;
+    }
+    @Override
+    public String toString() {
+        return "Quantidade no estoque: " + estoque();
     }
 }
