@@ -4,7 +4,7 @@ package aula15;
  *
  * @author Paula
  */
-public class Info {
+public abstract class Info implements Produtos {
     protected String modelo;
     protected String marca;
     public Info () {}

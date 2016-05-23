@@ -4,7 +4,7 @@ package aula15;
  *
  * @author Paula
  */
-public class Computador extends Info implements Produtos {
+public class Computador extends Info {
     private double preco;
     private int quantidade;
     private int memoria;
@@ -44,6 +44,6 @@ public class Computador extends Info implements Produtos {
     }
     @Override
     public String toString() {
-        return "Quantidade no estoque: " + estoque();
+        return "Quantidade de " + getModelo() + getMarca()+ " no estoque: " + estoque();
     }
 }
