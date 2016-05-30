@@ -4,7 +4,7 @@ package aula17;
  *
  * @author Paula
  */
-public class Cavalo extends Animal {
+public class Cavalo extends Animal implements Movimento {
     public Cavalo() {}
     public Cavalo(String nome, int idade) {
         super(nome, idade);
@@ -13,7 +13,12 @@ public class Cavalo extends Animal {
     public String emiteSom() {
         return "Relincho";
     }
-    public String corre() {
-        return "Correu";
+    @Override
+    public String movimento() {
+        return "Corre";
+    }
+    @Override
+    public String toString() {
+        return "Cavalo\nNome: " + nome + "\nIdade: " + idade; 
     }
 }

@@ -20,8 +20,7 @@ public class Aula17 {
         a[0] = c;
         a[1] = cav;
         a[2] = p;
-        JOptionPane.showMessageDialog(null, "O cachorro faz: " + a[0].emiteSom());
-        JOptionPane.showMessageDialog(null, "O cavalo faz: " + a[1].emiteSom());
-        JOptionPane.showMessageDialog(null, "A preguiça faz: " + a[2].emiteSom());
+        for (int i=0; i<3; i++)    
+            JOptionPane.showMessageDialog(null, "Nome: " + a[i].getNome() + "\nSom: " + a[i].emiteSom());
     } 
 }
