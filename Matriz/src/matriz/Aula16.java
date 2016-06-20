@@ -13,8 +13,6 @@ public class Aula16 {
     public static void main(String[] args) {
         //preenche a matriz
         Matriz m = new Matriz(4, 4);
-        //determinar numero a ser procurado
-        int x = Integer.parseInt(JOptionPane.showInputDialog("Encontrar as ocorrências de: "));
         //transcreve a matriz para o JTextArea
         JTextArea area = new JTextArea();
         for (int i=0; i<4; i++) {
@@ -23,6 +21,14 @@ public class Aula16 {
             }
             area.append("\n");
         }
+        //coloca a matriz em um frame
+        JFrame frame = new JFrame();
+        frame.add(area);
+        frame.pack();
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        //determinar numero a ser procurado
+        int x = Integer.parseInt(JOptionPane.showInputDialog("Encontrar as ocorrências de: "));
         //encontra o menor e o maior
         area.append("\nMenor valor " + m.retornaMenor() +
                 "\nMaior valor: " + m.retornaMaior() + "\n");
@@ -40,9 +46,8 @@ public class Aula16 {
             area.append("\nTodas as ocorrências: " + m.todasOcorrencias(x));
         }
         //cria a janela de exibição
-        JFrame frame = new JFrame();
         frame.add(area);
-        frame.setSize(500, 600);
+        frame.pack();
         frame.setVisible(true);
         frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     }  

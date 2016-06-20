@@ -14,11 +14,23 @@ public class Matriz {
         this.linha = linha;
         this.coluna = coluna;
         matriz = new int[linha][coluna];
+        inicializaMatriz();
+    }
+    public void inicializaMatriz() {
         for (int i=0; i<linha; i++) {
             try {    
                 for (int j=0; j<coluna; j++) {
                     Random rand = new Random();
-                    matriz[i][j] = rand.nextInt(10);
+                    matriz[i][j] = rand.nextInt(15);
+                    while (matriz[i][j] == 0) {
+                        try {    
+                            if (matriz[i][j] == 0)
+                                throw new excecao("Número não pode ser 0!");
+                        } catch (excecao e) {
+                            System.out.println("erro: " + e);
+                            matriz[i][j] = rand.nextInt(15);
+                        }
+                    }
                 }
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("erro: " + e);
