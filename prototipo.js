@@ -1,40 +1,44 @@
-'use strict';
-var vetoresEl = document.querySelectorAll('.vetor');
+var vetores = document.getElementsByClassName('vetor'),
+      arrVetores =  Array.prototype.slice.call(vetores);
 
 window.onload = function() {
   //--HABILITA EVENTOS DOS INPUTS
-  for (let vetALinkar of vetoresEl) {
-    linkar(vetALinkar);
+  for (var i=0; i<vetores.length-1; i++) {
+    linkar(vetores[i]);
   }
   //---EVENTO DE RESULTADO
-  document.getElementsByClassName('resultado')[0].addEventListener('click', calcResultanteVetPadrao, false);
+  document.getElementsByClassName('resultado')[0].addEventListener('click', function() {
+    resultante();
+  }, false);
 
-  document.getElementsByClassName('resultado')[1].addEventListener('click', calcResultanteVetUnitario, false);
+   document.getElementsByClassName('resultado')[1].addEventListener('click', function() {
+    unitario();
+    resultanteUn();
+  }, false);
 
-  document.getElementById('addUn').addEventListener('click', acrescentarVetUn, false);
+  document.getElementsByClassName('addUn')[0].addEventListener('click', acrescentarUn, false);
 
-  document.getElementById('remUn').addEventListener('click', removerVetUn, false);
 };
 
 //--rotaciona setas de acordo com angulo
-function rotacionarSetaDoVetor(val, vetor) {
-  let seta = vetor.querySelector('.seta');
-  seta.style.transform = 'rotate(' + (-val) + 'deg)';
+function rotacionar(val, vetor) {
+  var seta = vetor.getElementsByClassName('seta')[0];
+  seta.style.transform = "rotate(" + (-val) + "deg)";
 }
 
-function calcResultanteVetPadrao() {
-  let ckb = document.getElementsByName('op'),
-      arrModulos = [],
+function resultante() {
+  var ckb = document.getElementsByName('op');
+  var arrModulos = [],
       arrAngulos = [];
-  for (let vetor of vetoresEl) { //array tem 1 elemento a mais
-    arrModulos.push(vetor.querySelector('.modulo').value);
-    arrAngulos.push(vetor.querySelector('.valorFinal').value);
+  for (var i=0; i < vetores.length-1; i++) { //array tem 1 elemento a mais
+    arrModulos.push(vetores[i].getElementsByClassName('modulo')[0].value);
+    arrAngulos.push(vetores[i].getElementsByClassName('valorFinal')[0].value);
   }
   //--IMPLEMENTAR AQUI FUNCIONALIDADE DE +DE 3 VETORES
-  let angulo,
+  var angulo,
       modResult,
       angResult,
-      a = arrModulos[0],
+      a = arrModulos[0];
       b = arrModulos[1];
   //--SE FOR UMA SUBTRAÇÃO, O ÂNGULO X A SER SUBTRAÍDO SE TRANSFORMA EM -X
   if (ckb[1].checked) {
@@ -68,7 +72,7 @@ function calcResultanteVetPadrao() {
       x*= -1;
     }
     //pequena gambiarra
-    if (arrAngulos[0] === 0 || arrAngulos[0] == 360) {
+    if (arrAngulos[0] == 0 || arrAngulos[0] == 360) {
       if (arrAngulos[1] > 180) {
         arrAngulos[0] = 360;
       }
@@ -76,7 +80,7 @@ function calcResultanteVetPadrao() {
         arrAngulos[0] = 0;
       }
     }
-    if (arrAngulos[1] === 0 || arrAngulos[1] == 360) {
+    if (arrAngulos[1] == 0 || arrAngulos[1] == 360) {
       if (arrAngulos[0] > 180) {
         arrAngulos[1] = 360;
       }
@@ -108,37 +112,35 @@ function calcResultanteVetPadrao() {
   if (angResult > 360) {
     angResult %= 360;
   }
+  //--LIMITA CASAS DECIMAIS
+  angResult = angResult.toFixed(3);
   //--CHAMA A FUNÇÃO MONTAR VETOR
-  montarVetor(modResult, round(angResult, 3));
+  montarVetor(modResult, angResult);
 }
 
-function round(value, decimals) {
-  return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
-}
 
 function montarVetor(mod, angulo) {
   //--verifica se vetor resultante ja está sendo exibido
-  let vetRes;
-  if (document.querySelector('.vetor-resultante')) {
-    vetRes = document.querySelector('.vetor-resultante');
+  if (document.getElementsByClassName('vetor-resultante')[0]) {
+    var vetRes = document.getElementsByClassName('vetor-resultante')[0];
   }
   else {
-    vetRes = document.querySelector('.vetor-final');
+    var vetRes = document.getElementsByClassName('vetor-final')[0];
   }
   //--caso o modulo da resultante seja nula, caso especial
-  let  seta = vetRes.querySelector('.seta');
   if (mod === 0) {
+    var  seta = vetRes.getElementsByClassName('seta')[0];
     seta.style.transform = 'rotate(0)';
-    seta.src = 'imgs\\zero.png';
-    vetRes.querySelector('.valorFinal').value = 0;
+    seta.src = "zero.png";
+    vetRes.getElementsByClassName('valorFinal')[0].value = 0;
   }
   else {
-    seta.src = 'imgs\\seta1.png';
-    seta.style.transform = 'rotate(' + (-angulo) + 'deg)';
-    vetRes.querySelector('.valorFinal').value = angulo;
+    vetRes.getElementsByClassName('seta')[0].src = "seta1.png";
+    vetRes.getElementsByClassName('seta')[0].style.transform = "rotate(" + (-angulo) + 'deg)';    
+    vetRes.getElementsByClassName('valorFinal')[0].value = angulo;
   }
   //---Mostra modulo com 3 casas dps da virgula
-  vetRes.querySelector('.modulo').value = round(mod, 3);
+  vetRes.getElementsByClassName('modulo')[0].value = mod.toFixed(3);
 
   //--Exibe resultante, caso n esteja sendo exibida
   if (vetRes.classList.contains('vetor-resultante')) {
@@ -150,35 +152,31 @@ function montarVetor(mod, angulo) {
 
 //--Funcao nao-implementada que permitira +de 2 vetores
 function criarVetor() {
-  let sec = document.createElement('section');
+  var sec = document.createElement('section');
+
 }
 
 //--Faz conexao entre valores dos inputs e rotaçao
 function linkar(vetor) {
   //---CASO ALTERE VALOR PELO RANGE
-  vetor.querySelector('.valorRange').addEventListener('input', function(e) {
-    let alvoEl = e.target,
-        vetorEl = alvoEl.closest('.vetor'),
-        valorAlvoEl = alvoEl.value;
+  vetor.getElementsByClassName('valorRange')[0].addEventListener('input', function(e) {
+    e.target.parentNode.getElementsByClassName('valorNumber')[0].value = e.target.value;
+    e.target.parentNode.getElementsByClassName('valorFinal')[0].value = e.target.value;
 
-    vetorEl.querySelector('.valorNumber').value = valorAlvoEl;
-    vetorEl.querySelector('.valorFinal').value = valorAlvoEl;
-
-    rotacionarSetaDoVetor(valorAlvoEl, vetorEl);
+    rotacionar(e.target.value, e.target.parentNode);
   }, false);
+//
   //---CASO ALTERE VALOR PELO INPUT
-  vetor.querySelector('.valorNumber').addEventListener('input', function(e) {
-    let alvoEl = e.target,
-        vetorEl = alvoEl.closest('.vetor'),
-        valorAlvoEl = alvoEl.value;
+  vetor.getElementsByClassName('valorNumber')[0].addEventListener('input', function(e) {
+    var valor = e.target.value;
     
-    if (valorAlvoEl >= 360) {
-      valorAlvoEl = valorAlvoEl%360;
+    if(valor>=360) {
+      valor = valor%360;
     }
 
-    valorAlvoEl = (valorAlvoEl < 0) ? (360+valorAlvoEl) : valorAlvoEl;
-    vetorEl.querySelector('.valorRange').value = valorAlvoEl;
-    vetorEl.querySelector('.valorFinal').value = valorAlvoEl;
-    rotacionarSetaDoVetor(valorAlvoEl, vetorEl);
+    valor = (valor < 0) ? eval(360+valor) : valor;
+    e.target.parentNode.parentNode.getElementsByClassName('valorRange')[0].value = valor;
+    e.target.parentNode.parentNode.getElementsByClassName('valorFinal')[0].value = valor;
+    rotacionar(valor, e.target.parentNode.parentNode);
   }, false);
 }
